@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 import br.com.db.DB;
 
+/* inserir dados no banco */
 public class Program2 {
 
 	public static void main(String[] args) {
