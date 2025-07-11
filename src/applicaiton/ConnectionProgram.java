@@ -7,8 +7,8 @@ import java.sql.Statement;
 
 import br.com.db.DB;
 
-/* inserir dados no banco */
-public class Program2 {
+/* conexão com o banco */
+public class ConnectionProgram {
 
 	public static void main(String[] args) {
 

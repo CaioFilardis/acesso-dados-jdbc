@@ -10,7 +10,8 @@ import java.text.SimpleDateFormat;
 
 import br.com.db.DB;
 
-public class Program {
+/* inserir dados no banco */
+public class InsertProgram {
 
 	public static void main(String[] args) {
 
@@ -26,10 +27,10 @@ public class Program {
 			
 			// inserindo dados utilizando scripts SQL, instanciando o 'PreparedStatement'
 			st = conn.prepareStatement(
-					"INSERT INTO seller " // inserir dados
-					+ "(name, Email, BirthDate, BaseSalary, DepartmentId)" // selecionando os parâmetros
+					"INSERT INTO department " // inserir dados
+					+ "(Name)" // selecionando os parâmetros
 					+ "VALUES " // inserir os valores abaixo
-					+ "(?, ?, ?, ?, ?)",
+					+ "(?)",
 					+ Statement.RETURN_GENERATED_KEYS); // recuperação de Id 
 					
 			// definindo os valores dos campos, com base np seu tipo de dado definido na tabela

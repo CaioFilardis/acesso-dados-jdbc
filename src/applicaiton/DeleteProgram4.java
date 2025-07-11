@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import br.com.db.DB;
+import br.com.db.DbIntegrityException;
 
 /* atualizar dados da tabela */
-public class Program3 {
+public class DeleteProgram4 {
 
 	public static void main(String[] args) {
 		
@@ -17,25 +18,23 @@ public class Program3 {
 			conn = DB.getConnection();
 			
 			st = conn.prepareStatement(
-					"UPDATE seller "
-					+ "SET BaseSalary = BaseSalary + ? "
-					+ "WHERE " // aplicando restrição para não atualizar todo o DB
-					+ "(DepartmentId = ?)");
+					"DELETE FROM department "
+					+ "WHERE " // também aplicar restrição
+					+ "Id = ?");
 			
-			st.setDouble(1, 200.0);
-			st.setDouble(2, 2);
+			st.setInt(1, 6);
 			
-			int rowsAffected = st.executeUpdate(); // linhas afetadas
+			int rowsAffected = st.executeUpdate();
 			
 			System.out.println("Done!\nRows affected: " + rowsAffected);
 		}
 		catch (SQLException e) {
-			e.printStackTrace();
+			// lançar a exceção personalizada
+			throw new DbIntegrityException(e.getMessage());
 		}
 		finally {
 			DB.closeStatement(st);
 			DB.closeConnection(conn);
 		}
 	}
-
 }
